@@ -1,15 +1,15 @@
 import { Component } from "react";
 import { useParams } from 'react-router-dom';
+import Carousel from "./Carousel";
 
 class Details extends Component {
-    constructor(props){
-        super(props); //* super says give this to my parent class 
-    
-        this.state = { loading: true} //* this - used to manage state and props.  the instance of Details :)
+    // constructor(props){
+    //     super(props); //* super says give this to my parent class 
+    //     this.state = { loading: true} 
+    //     //* this - used to manage state and props.  the instance of Details :)
+    // } //* in this case you are passing props to component/react, so it knows you got the props.
 
-     
-    
-    } //* in this case you are passing props to component/react, so it knows you got the props.
+    state = { loading: true };
 
     async componentDidMount(){
         const res = await fetch(
@@ -22,7 +22,8 @@ class Details extends Component {
         this.setState({ loading: false, ...json.pets[0] });
         //* the above line is equivalent to the 4 lines below.  It makes sure
         //* that we only render/setState once for this :)
-        //* Hopefully react would know to batch changes in one, but we can't guarantee this.
+        //* Hopefully react would know to batch changes in one, 
+        //*but we can't guarantee this.
         // this.setState({
         //     loading: false
         // });
@@ -33,9 +34,10 @@ class Details extends Component {
             return <h2>Loading ... </h2>
         }
 
-        const { animal, breed, city, state, description, name } = this.state;
+        const { animal, breed, city, state, description, name, images } = this.state;
         return(
             <div className="details">
+                <Carousel images={images} />
                 <div>
                     <h1>{name}</h1>
                     <h2>
@@ -56,8 +58,8 @@ const WrappedDetails = () => {
 
 // const Details = () => {
 //     const { id } = useParams();
-//     return <h2>{ id } </h2>
-// }
+//    return <h2>{ id } </h2>
+// } 
 
 export default WrappedDetails ;
 

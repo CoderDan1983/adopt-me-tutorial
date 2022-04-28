@@ -18,6 +18,7 @@ const Pet = ({ name, animal, breed, images, location, id }) =>{
         </Link>
     )
 }
+export default Pet;
 
 
 // import React from 'react';
@@ -29,5 +30,3 @@ const Pet = ({ name, animal, breed, images, location, id }) =>{
 //         React.createElement("h2", {}, props.breed),
 //     ]);
 // };
-
-export default Pet;
