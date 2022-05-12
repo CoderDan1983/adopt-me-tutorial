@@ -5,7 +5,7 @@ const localCache = {}; //ie - some "local storage" in this case ^_^
 export default function useBreedList(animal) {
     const [breedList, setBreedList ] = useState([]);
     const [status, setStatus] = useState("unloaded"); //unloaded, pending, loaded.
-
+    
     useEffect(()=>{
         if(!animal){
             setBreedList([]);

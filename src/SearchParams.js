@@ -15,7 +15,9 @@ const SearchParams = () =>{
   
     const [animal, setAnimal] = useState("");
     const [breed, setBreed] = useState("");
-    const breeds = useBreedList(animal);
+    const [breeds] = useBreedList(animal);
+    console.log('this is the recieved breeds list: ');
+    console.log(breeds);
     const [theme, setTheme] = useContext(ThemeContext); //why use setTheme, lolz?
     const [pets, setPets] = useState([]);
 
@@ -31,7 +33,7 @@ const SearchParams = () =>{
     }
 
     return (
-        <div className="serach-params">
+        <div className="search-params">
             <form
                 onSubmit={ (e) => {
                     e.preventDefault(); 
